@@ -33,10 +33,10 @@ public class ReimbursementDAO {
 		String sql = "insert into Expenses(Name,Reason_ID,Amount,Notes,Status_ID) values (?,?,?,?,?)"; 			
 		PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); //initializes DB connection
 		statement.setString(1, expense.getName());  //gets name   field from expense object
-		statement.setInt(2, expense.getReasonID()); //gets amount field from expense object
+		statement.setInt(2, expense.getReason().getReasonID()); //gets reason id from reason object in expense object
 		statement.setFloat(3, expense.getAmount()); //gets amount field from expense object
 		statement.setString(4, expense.getNotes()); //gets notes  field from expense object
-		statement.setInt(5, expense.getStatusID()); //gets status field from expense object
+		statement.setInt(5, expense.getStatus().getStatusID()); //gets status id from status object in expense object
 		statement.executeUpdate();
 		
 //		get the id of the newly created item
@@ -92,7 +92,7 @@ public class ReimbursementDAO {
 	public boolean update(Expenses expense) throws SQLException{ //updates value in table
 		String sql = "update Expenses set Status_ID = ? where Expenses_ID = ?";
 		PreparedStatement statement = connection.prepareStatement(sql);
-		statement.setInt(1, expense.getStatusID());
+		statement.setInt(1, expense.getStatus().getStatusID());
 		statement.setInt(2, expense.getExpensesID());
 		return statement.executeUpdate() == 1;
 	}

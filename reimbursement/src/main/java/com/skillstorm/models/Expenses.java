@@ -15,11 +15,11 @@ public class Expenses {
 		super();
 	}
 
-	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
+	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES) //constructor used when creating new item
 	public Expenses(@JsonProperty("name") String name, @JsonProperty("reason") int reason, @JsonProperty("amount") float amount, @JsonProperty("notes") String notes) {
 		super();
 		this.name = name;
-//		this.reason = new Reason(reason);
+		this.reason = new Reason(reason);
 		this.amount = amount;
 		this.notes = notes;
 		this.status = new Status(1, "Pending");
@@ -43,9 +43,7 @@ public class Expenses {
 	
 //	Reason object
 
-	public int getReasonID() { //gets reasonID from Reason object
-		return reason.getReasonID();
-	}
+
 
 	public void setReason(int reasonID, String reasonName, String reasonDescription) { //initializes Reason object
 		this.reason = new Reason(reasonID, reasonName, reasonDescription); 
@@ -75,9 +73,6 @@ public class Expenses {
 		return status;
 	}
 
-	public int getStatusID() {
-		return status.getStatusID();
-	}
 	
 	public void setStatus(int statusID, String statusName) {
 		this.status = new Status(statusID, statusName);

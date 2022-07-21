@@ -58,7 +58,6 @@ public class ReimbursementController extends HttpServlet{
 		}
 		resp.setStatus(201); //indicates that the change was committed
 		
-		req.getSession().setAttribute("addedExpense", expense); //tracking products YOU added
 
 		
 //		this could be as short as one line
