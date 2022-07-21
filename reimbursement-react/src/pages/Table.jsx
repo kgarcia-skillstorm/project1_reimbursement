@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import { ExpenseRow } from '../components';
+import { StatusCell } from '../components/StatusCell';
 
 
 export const Table = () => {
@@ -35,7 +36,13 @@ export const Table = () => {
                         <tbody>
                             {expenses.map((expense) => {
                                 return (
-                                    <ExpenseRow setExpenses={setExpenses} updateData={updateData} expense={expense} key={expense.expensesID.toString()}  />
+                                    <ExpenseRow expense={expense} key={expense.expensesID.toString()}  >
+                                        <StatusCell 
+                                        updateData={updateData}
+                                        expensesID={expense.expensesID}
+                                        statusID={expense.status.statusID}
+                                        />
+                                    </ExpenseRow>
                                 )
                             })}
 
@@ -48,3 +55,7 @@ export const Table = () => {
     )
 }
 
+// setExpenses={setExpenses} 
+// updateData={updateData} 
+// expense={expense} 
+// key={expense.expensesID.toString()}  

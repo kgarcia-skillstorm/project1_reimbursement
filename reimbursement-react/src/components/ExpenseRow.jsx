@@ -1,9 +1,8 @@
 // import axios from "axios"
 import { useEffect, useRef } from "react"
-import { StatusCell } from "./StatusCell";
 
 
-export const ExpenseRow = ({ setExpenses, updateData, expense }) => {
+export const ExpenseRow = ({ expense, children }) => {
     const statusColor = useRef();
 
     useEffect(() => {
@@ -28,7 +27,7 @@ export const ExpenseRow = ({ setExpenses, updateData, expense }) => {
             </td>
             <td>{expense.notes}</td>
             <td>
-                <StatusCell setExpenses={setExpenses} updateData={updateData} expensesID={expense.expensesID} statusID={expense.status.statusID} />
+                {children}
             </td>
         </tr>
     )

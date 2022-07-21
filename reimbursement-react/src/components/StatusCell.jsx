@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const StatusCell = ({setExpenses, updateData, expensesID, statusID}) => {
+export const StatusCell = ({updateData, expensesID, statusID}) => {
     const updateStatus = async (expensesID, statusID) => {
 
         await axios.put("http://localhost:8080/reimbursement-java/",
@@ -9,17 +9,12 @@ export const StatusCell = ({setExpenses, updateData, expensesID, statusID}) => {
                 status: statusID
             }
         )
-        setExpenses(expenses => expenses.map(expense => {
-            if (expense.expensesID === expensesID) {
-                expense.status.statusID = statusID;
-            }
-            return expense;
-        }));
+        .then(updateData())
     }
 
     const deleteItem = async (expensesID) => {
         await axios.delete("http://localhost:8080/reimbursement-java/", { data: { expensesID: expensesID } })
-        updateData();
+        .then(updateData())
     }
 
     switch (statusID) {
