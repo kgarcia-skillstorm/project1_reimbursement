@@ -1,8 +1,7 @@
 // import "../components/scripts";
 import axios from 'axios';
 import { useEffect, useState } from "react";
-import { ExpenseRow } from '../components';
-import { StatusCell } from '../components/StatusCell';
+import { ExpenseRow, StatusCell } from '../components';
 import ReactLoading from 'react-loading';
 
 
