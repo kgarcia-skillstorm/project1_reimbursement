@@ -10,6 +10,11 @@ public class Status {
 		super();
 	}
 
+	public Status(int statusID) {
+		super();
+		this.statusID = statusID;
+	}
+
 	public Status(int statusID, String statusName) {
 		super();
 		this.statusID = statusID;

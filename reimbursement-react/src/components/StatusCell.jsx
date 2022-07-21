@@ -9,10 +9,9 @@ export const Pending = ({ setExpenses, expensesID, statusID }) => {
                 status: statusID
             }
         )
-        console.log("button");
         setExpenses(expenses => expenses.map(expense => {
             if (expense.expensesID === expensesID) {
-                expense.statusID = statusID;
+                expense.status.statusID = statusID;
             }
             return expense;
         }));

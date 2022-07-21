@@ -8,14 +8,14 @@ export const ExpenseRow = ({ setExpenses, expense }) => {
 
     useEffect(() => {
         let color;
-        switch (expense.statusID) {
+        switch (expense.status.statusID) {
             case 1: color = "table-warning"; break;
             case 2: color = "table-success"; break;
             case 3: color = "table-danger"; break;
             default: color = "table-warning"; break;
         }
         statusColor.current.className = color;
-    }, [expense.statusID]);
+    }, [expense.status.statusID]);
     // console.log(expense)
     return (
 
@@ -29,10 +29,10 @@ export const ExpenseRow = ({ setExpenses, expense }) => {
             <td>{expense.notes}</td>
             <td>
                 {{
-                    1: <Pending setExpenses={setExpenses} expensesID={expense.expensesID} statusID={expense.statusID} />,
+                    1: <Pending setExpenses={setExpenses} expensesID={expense.expensesID} statusID={expense.status.statusID} />,
                     2: <Approved />,
                     3: <Denied />
-                }[expense.statusID]}
+                }[expense.status.statusID]}
             </td>
         </tr>
     )

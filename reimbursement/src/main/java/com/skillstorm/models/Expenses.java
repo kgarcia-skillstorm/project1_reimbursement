@@ -72,6 +72,10 @@ public class Expenses {
 	public Status getStatus() {
 		return status;
 	}
+	
+	public void setStatus(int statusID) {
+		this.status = new Status(statusID);
+	}
 
 	
 	public void setStatus(int statusID, String statusName) {
