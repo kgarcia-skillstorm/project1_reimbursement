@@ -69,7 +69,7 @@ public class ReimbursementDAO {
 //			stores values in the Java object
 			row.setExpensesID(expensesID);  
 			row.setName(name);
-			row.setReason(reasonID);
+			row.setReason(reasonID, reasonName, reasonDescription);
 			row.setAmount(amount);
 			row.setNotes(notes);
 			row.setStatus(statusID);

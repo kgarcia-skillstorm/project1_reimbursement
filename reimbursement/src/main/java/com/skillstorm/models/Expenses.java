@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.*;
 public class Expenses {
 	private int expensesID;
 	private String name;
-	private Reason reason = new Reason();
+	private Reason reason;
 	private float amount;
 	private String notes;
 	private Status status = new Status();
@@ -19,7 +19,7 @@ public class Expenses {
 	public Expenses(@JsonProperty("name") String name, @JsonProperty("reason") int reason, @JsonProperty("amount") float amount, @JsonProperty("notes") String notes) {
 		super();
 		this.name = name;
-		this.reason = new Reason(reason);
+//		this.reason = new Reason(reason);
 		this.amount = amount;
 		this.notes = notes;
 		this.status = new Status(1);
@@ -47,8 +47,8 @@ public class Expenses {
 		return reason.getReasonID();
 	}
 
-	public void setReason(int reasonID) { //initializes Reason object
-		reason.setReason(reasonID); 
+	public void setReason(int reasonID, String reasonName, String reasonDescription) { //initializes Reason object
+		this.reason = new Reason(reasonID, reasonName, reasonDescription); 
 	}
 
 	public Reason getReason() {
