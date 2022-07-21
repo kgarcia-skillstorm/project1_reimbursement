@@ -3,7 +3,7 @@ import axios from 'axios';
 export const Pending = ({ setExpenses, expensesID, statusID }) => {
     const updateStatus = async (expensesID, statusID) => {
 
-        await axios.put("http://localhost:8080/reimbursement/",
+        await axios.put("http://localhost:8080/reimbursement-java/",
             {
                 expensesID: expensesID,
                 status: statusID

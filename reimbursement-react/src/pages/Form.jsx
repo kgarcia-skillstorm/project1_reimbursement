@@ -38,7 +38,7 @@ export const Form = () => {
      const handleSubmit = async (event) => {
         try {
             event.preventDefault(); 
-            await axios.post("http://localhost:8080/reimbursement/",  
+            await axios.post("http://localhost:8080/reimbursement-java/",  
                 {
                     name:   name.current.value,
                     reason: reasonID.current.value,

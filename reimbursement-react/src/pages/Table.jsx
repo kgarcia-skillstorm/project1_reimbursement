@@ -13,7 +13,7 @@ export const Table = () => {
     }, []);
 
     const updateData = (() => {
-        axios.get("http://localhost:8080/reimbursement/")
+        axios.get("http://localhost:8080/reimbursement-java/")
         .then(res => setExpenses(res.data));
         console.log("update");
     })
