@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 import { ExpenseRow } from '../components';
 import { StatusCell } from '../components/StatusCell';
+import ReactLoading from 'react-loading';
 
 
 export const Table = () => {
@@ -18,8 +19,8 @@ export const Table = () => {
         .then(res => setExpenses(res.data));
     })
     return (
-        <>
-
+        expenses && expenses.length ? 
+            <>
             <div className="container col-11">
 
                 <div className="table-responsive">
@@ -36,7 +37,7 @@ export const Table = () => {
                         <tbody>
                             {expenses.map((expense) => {
                                 return (
-                                    <ExpenseRow expense={expense} key={expense.expensesID.toString()}  >
+                                    <ExpenseRow expense={expense} key={expense.expensesID.toString()} >
                                         <StatusCell 
                                         updateData={updateData}
                                         expensesID={expense.expensesID}
@@ -51,7 +52,8 @@ export const Table = () => {
                 </div>
 
             </div>
-        </>
+        </> : <div className="container col-11"><ReactLoading type="spin" color="#707070" className='loading'/></div>
+    
     )
 }
 

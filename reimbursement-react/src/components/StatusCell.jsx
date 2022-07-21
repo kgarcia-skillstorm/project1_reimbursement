@@ -9,12 +9,12 @@ export const StatusCell = ({updateData, expensesID, statusID}) => {
                 status: statusID
             }
         )
-        .then(updateData())
+        updateData();
     }
 
     const deleteItem = async (expensesID) => {
         await axios.delete("http://localhost:8080/reimbursement-java/", { data: { expensesID: expensesID } })
-        .then(updateData())
+        updateData();
     }
 
     switch (statusID) {
