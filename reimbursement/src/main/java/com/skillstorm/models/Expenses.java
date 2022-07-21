@@ -9,7 +9,7 @@ public class Expenses {
 	private Reason reason;
 	private float amount;
 	private String notes;
-	private Status status = new Status();
+	private Status status;
 	
 	public Expenses() {
 		super();
@@ -22,7 +22,7 @@ public class Expenses {
 //		this.reason = new Reason(reason);
 		this.amount = amount;
 		this.notes = notes;
-		this.status = new Status(1);
+		this.status = new Status(1, "Pending");
 	}
 
 	public int getExpensesID() {
@@ -79,8 +79,8 @@ public class Expenses {
 		return status.getStatusID();
 	}
 	
-	public void setStatus(int statusID) {
-		status.setStatus(statusID); //runs setStatus method in Status.java
+	public void setStatus(int statusID, String statusName) {
+		this.status = new Status(statusID, statusName);
 	}
 
 	@Override

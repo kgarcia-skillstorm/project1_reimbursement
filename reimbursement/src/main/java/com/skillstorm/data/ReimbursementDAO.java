@@ -72,7 +72,7 @@ public class ReimbursementDAO {
 			row.setReason(reasonID, reasonName, reasonDescription);
 			row.setAmount(amount);
 			row.setNotes(notes);
-			row.setStatus(statusID);
+			row.setStatus(statusID, statusName);
 			
 			expenses.add(row);
 		}
