@@ -70,7 +70,6 @@ public class ReimbursementController extends HttpServlet{
 		Expenses expense = objectMapper.readValue(requestBody, Expenses.class); // takes InputStream, converts to Expenses object
 		try {
 			dao.update(expense);
-			System.out.println("button");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
