@@ -30,8 +30,8 @@ export const ExpenseRow = ({ setExpenses, expense }) => {
             <td>
                 {{
                     1: <Pending setExpenses={setExpenses} expensesID={expense.expensesID} statusID={expense.status.statusID} />,
-                    2: <Approved />,
-                    3: <Denied />
+                    2: <Approved expensesID={expense.expensesID}/>,
+                    3: <Denied expensesID={expense.expensesID}/>
                 }[expense.status.statusID]}
             </td>
         </tr>

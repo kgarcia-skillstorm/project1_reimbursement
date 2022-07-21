@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-export const Pending = ({ setExpenses, expensesID, statusID }) => {
+
+
+export const Pending = ({ setExpenses, expensesID }) => {
     const updateStatus = async (expensesID, statusID) => {
 
         await axios.put("http://localhost:8080/reimbursement-java/",
@@ -28,16 +30,42 @@ export const Pending = ({ setExpenses, expensesID, statusID }) => {
     )
 }
 
-export const Approved = () => (
-    <div className="approved">
-        <span>Approved </span>
-        <span className="material-symbols-outlined">check</span>
-    </div>
-)
+export const Approved = ({ expensesID }) => {
+    const deleteItem = async (expensesID) => {
+        await axios.delete("http://localhost:8080/reimbursement-java/",
+            {
+                expensesID: expensesID,
+            }
+        )
 
-export const Denied = () => (
-    <div className="denied">
-        <span>Denied</span>
-        <span className="material-symbols-outlined">close</span>
-    </div>
-)
+    }
+
+    return (
+        <div className="approved">
+            <span>Approved </span>
+            <span className="material-symbols-outlined">check</span>
+            <div className="buttons"><span className="material-symbols-outlined delete" title='Delete item' onClick={() => { deleteItem(expensesID) }}> do_not_disturb_on</span></div>
+
+
+        </div>
+    )
+}
+
+export const Denied = ({ expensesID }) => {
+    const deleteItem = async (expensesID) => {
+        await axios.delete("http://localhost:8080/reimbursement-java/", 
+            {
+                expensesID: expensesID,
+            }
+        )
+    
+    }
+    
+    return (
+        <div className="denied">
+            <span>Denied</span>
+            <span className="material-symbols-outlined">close</span>
+            <div className="buttons"><span className="material-symbols-outlined delete" title='Delete item' onClick={() => { deleteItem(expensesID) }}> do_not_disturb_on</span></div>
+        </div>
+    )
+}

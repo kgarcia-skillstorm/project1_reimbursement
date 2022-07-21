@@ -43,6 +43,7 @@ header {
     font-variation-settings: 'FILL' 0, 'wght' 900;
     color: black;
     transition: font-variation-settings 0.2s;
+    cursor: pointer;
 
 }
 
@@ -56,12 +57,16 @@ header {
     color: green;
 }
 
-.buttons .deny:active {
+.buttons .deny:active, .buttons .delete:active {
     color: red;
 }
 
 .material-symbols-outlined{
     vertical-align: middle;
+}
+
+div.approved, div.denied {
+    white-space: nowrap;
 }
 
 a {

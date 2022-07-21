@@ -76,4 +76,18 @@ public class ReimbursementController extends HttpServlet{
 		resp.setStatus(201); //indicates that the change was committed
 
 	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		InputStream requestBody = req.getInputStream(); //retrieves HTTP request body
+		ObjectMapper objectMapper = new ObjectMapper(); //initializes Jackson ObjectMapper object
+		Expenses expense = objectMapper.readValue(requestBody, Expenses.class); // takes InputStream, converts to Expenses object
+		try {
+			dao.delete(expense.getExpensesID());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		resp.setStatus(201); //indicates that the change was committed
+
+	}
 }
