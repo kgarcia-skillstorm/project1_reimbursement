@@ -34,7 +34,7 @@ export const Approved = ({ expensesID }) => {
     const deleteItem = async (expensesID) => {
         await axios.delete("http://localhost:8080/reimbursement-java/",
             {
-                expensesID: expensesID,
+                expensesID: expensesID
             }
         )
 
@@ -51,13 +51,10 @@ export const Approved = ({ expensesID }) => {
     )
 }
 
-export const Denied = ({ expensesID }) => {
+export const Denied = ({setExpenses, expensesID}) => {
     const deleteItem = async (expensesID) => {
-        await axios.delete("http://localhost:8080/reimbursement-java/", 
-            {
-                expensesID: expensesID,
-            }
-        )
+        await axios.delete("http://localhost:8080/reimbursement-java/", { data: { expensesID: expensesID } })
+            .then(setExpenses)
     
     }
     

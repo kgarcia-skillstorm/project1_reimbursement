@@ -81,10 +81,10 @@ public class ReimbursementDAO {
 	
 
 	
-	public boolean delete(int expensesID) throws SQLException { //deletes row with id in table
+	public boolean delete(Expenses expense) throws SQLException { //deletes row with id in table
 		String sql = "delete from Expenses where Expenses_ID = ?";
 		PreparedStatement statement = connection.prepareStatement(sql);
-		statement.setInt(1, expensesID);
+		statement.setInt(1, expense.getExpensesID());
 		return statement.executeUpdate() == 1;
 	}
 	
