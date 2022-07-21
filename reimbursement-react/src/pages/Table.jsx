@@ -35,7 +35,7 @@ export const Table = () => {
                         <tbody>
                             {expenses.map((expense) => {
                                 return (
-                                    <ExpenseRow setExpenses={setExpenses} expense={expense} key={expense.expensesID.toString()}  />
+                                    <ExpenseRow setExpenses={setExpenses} updateData={updateData} expense={expense} key={expense.expensesID.toString()}  />
                                 )
                             })}
 

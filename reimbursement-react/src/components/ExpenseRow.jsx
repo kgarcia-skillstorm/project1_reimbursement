@@ -1,9 +1,9 @@
 // import axios from "axios"
 import { useEffect, useRef } from "react"
-import { Pending, Approved, Denied } from "./StatusCell";
+import { StatusCell } from "./StatusCell";
 
 
-export const ExpenseRow = ({ setExpenses, expense }) => {
+export const ExpenseRow = ({ setExpenses, updateData, expense }) => {
     const statusColor = useRef();
 
     useEffect(() => {
@@ -28,11 +28,7 @@ export const ExpenseRow = ({ setExpenses, expense }) => {
             </td>
             <td>{expense.notes}</td>
             <td>
-                {{
-                    1: <Pending setExpenses={setExpenses} expensesID={expense.expensesID} statusID={expense.status.statusID} />,
-                    2: <Approved expensesID={expense.expensesID}/>,
-                    3: <Denied expensesID={expense.expensesID}/>
-                }[expense.status.statusID]}
+                <StatusCell setExpenses={setExpenses} updateData={updateData} expensesID={expense.expensesID} statusID={expense.status.statusID} />
             </td>
         </tr>
     )
