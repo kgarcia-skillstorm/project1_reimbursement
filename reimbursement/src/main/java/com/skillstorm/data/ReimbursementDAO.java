@@ -49,7 +49,7 @@ public class ReimbursementDAO {
 	
 	public Set<Expenses> findAll() throws SQLException { 
 		Set<Expenses> expenses = new LinkedHashSet<>(); 
-		String sql = "select *  from Expenses ORDER BY Expenses_ID DESC";
+		String sql = "SELECT Expenses_ID, Name, e.Reason_ID, Amount, Notes, e.Status_ID, s.Status_Name, r.Reason_Name, r.Reason_Description FROM Expenses e INNER JOIN Reason r ON e.Reason_ID = r.Reason_ID INNER JOIN Status s ON e.Status_ID = s.Status_ID ORDER BY Expenses_ID DESC";
 		Statement statement = connection.createStatement();
 		ResultSet rs = statement.executeQuery(sql); 
 		while (rs.next()) { 
@@ -62,6 +62,9 @@ public class ReimbursementDAO {
 			float amount   = rs.getFloat("Amount");
 			String notes   = rs.getString("Notes");
 			int statusID   = rs.getInt("Status_ID");
+			String statusName   = rs.getString("Status_Name");
+			String reasonName   = rs.getString("Reason_Name");
+			String reasonDescription   = rs.getString("Reason_Description");
 			
 //			stores values in the Java object
 			row.setExpensesID(expensesID);  

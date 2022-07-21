@@ -9,7 +9,7 @@ public class Expenses {
 	private Reason reason = new Reason();
 	private float amount;
 	private String notes;
-	private Status status = new Status(1);
+	private Status status = new Status();
 	
 	public Expenses() {
 		super();
