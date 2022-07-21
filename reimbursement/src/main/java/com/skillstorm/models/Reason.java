@@ -18,6 +18,10 @@ public class Reason {
 		this.reasonDescription = reasonDescription;
 	}
 
+	public Reason(int reasonID) {
+		this.reasonID = reasonID;
+	}
+
 	public int getReasonID() {
 		return reasonID;
 	}

@@ -30,7 +30,7 @@ public class ReimbursementDAO {
 	 
 	
 	public Expenses create(Expenses expense) throws SQLException { //receives expenses object from doPost method in ReimbursementController
-		String sql = "insert into Expenses(Name,Reason_ID,Amount,Notes,Status_ID) values (?,?,?,?,?)"; 			
+		String sql = "insert into Expenses(Name,Reason_ID,Amount,Notes,Status_ID) values (?,?,?,?,?)"; 	
 		PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS); //initializes DB connection
 		statement.setString(1, expense.getName());  //gets name   field from expense object
 		statement.setInt(2, expense.getReason().getReasonID()); //gets reason id from reason object in expense object
@@ -39,7 +39,6 @@ public class ReimbursementDAO {
 		statement.setInt(5, expense.getStatus().getStatusID()); //gets status id from status object in expense object
 		statement.executeUpdate();
 		
-//		get the id of the newly created item
 		ResultSet rs = statement.getGeneratedKeys();
 		rs.next();
 		int generatedId = rs.getInt(1);

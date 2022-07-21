@@ -16,10 +16,10 @@ public class Expenses {
 	}
 
 	@JsonCreator(mode = JsonCreator.Mode.PROPERTIES) //constructor used when creating new item
-	public Expenses(@JsonProperty("name") String name, @JsonProperty("reason") int reason, @JsonProperty("amount") float amount, @JsonProperty("notes") String notes) {
+	public Expenses(@JsonProperty("name") String name, @JsonProperty("reason") int reasonID, @JsonProperty("amount") float amount, @JsonProperty("notes") String notes) {
 		super();
 		this.name = name;
-		this.reason = new Reason(reason);
+		this.reason = new Reason(reasonID);
 		this.amount = amount;
 		this.notes = notes;
 		this.status = new Status(1, "Pending");
