@@ -82,11 +82,8 @@ public class ReimbursementController extends HttpServlet{
 		InputStream requestBody = req.getInputStream(); //retrieves HTTP request body
 		ObjectMapper objectMapper = new ObjectMapper(); //initializes Jackson ObjectMapper object
 		Expenses expense = objectMapper.readValue(requestBody, Expenses.class); // takes InputStream, converts to Expenses object
-		System.out.println("4");
 		try {
-			System.out.println("5");
 			dao.delete(expense);
-			System.out.println("6");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -114,6 +114,19 @@ nav a:hover, nav a:active{
     color: white;
 }
 
+.loading {
+    margin:auto;
+}
+
+.errorLink {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.errorLink:hover{
+    color: #707070;
+}
+
 @media screen and (max-width: 576px) {
     nav {
         display: block;
@@ -137,7 +150,4 @@ nav a:hover, nav a:active{
         width: 50%;
     }
 
-}
-.loading {
-    margin:auto;
 }

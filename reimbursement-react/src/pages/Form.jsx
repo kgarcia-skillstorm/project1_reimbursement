@@ -10,6 +10,8 @@ export const Form = () => {
     const amount     = useRef()
     const notes      = useRef()
     const reasonDesc = useRef()
+    const navigate = useNavigate();
+
     
     const reasonChange = (event) => {
         colorSelector(event);
@@ -34,9 +36,7 @@ export const Form = () => {
         reasonDesc.current.innerText = desc[value];
     }
 
-    const navigate = useNavigate();
      const handleSubmit = async (event) => {
-        try {
             event.preventDefault(); 
             await axios.post("http://localhost:8080/reimbursement-java/",  
                 {
@@ -44,7 +44,12 @@ export const Form = () => {
                     reason: reasonID.current.value,
                     amount: amount.current.value,
                     notes:  notes.current.value
+                })
+                .catch(function (error) {
+                    // handle error
+                    navigate("../Error500")
                 });
+                
 
             
             name.current.value = null;
@@ -56,9 +61,6 @@ export const Form = () => {
 
             navigate("../table");
 
-        } catch (err) {
-            console.error(err);
-        }
     }
 
     return (
