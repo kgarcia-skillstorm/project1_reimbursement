@@ -10,6 +10,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import com.skillstorm.models.Expenses;
+import com.skillstorm.models.Reason;
 
 public class ReimbursementDAO {
 	
@@ -76,6 +77,31 @@ public class ReimbursementDAO {
 			expenses.add(row);
 		}
 		return expenses;
+		
+	}
+	
+	public Set<Reason> findReason() throws SQLException { 
+		Set<Reason> reason = new LinkedHashSet<>(); 
+		String sql = "SELECT * FROM Reason;";
+		Statement statement = connection.createStatement();
+		ResultSet rs = statement.executeQuery(sql); 
+		while (rs.next()) { 
+			Reason row = new Reason();
+			
+//			 initializing variables with the fields from the DB output
+			int reasonID = rs.getInt("Reason_ID"); 
+			String reasonName    = rs.getString("Reason_Name"); 
+			String reasonDescription   = rs.getString("Reason_Description");
+
+			
+//			stores values in the Java object
+			row.setReasonID(reasonID);  
+			row.setReasonName(reasonName);
+			row.setReasonDescription(reasonDescription);
+			
+			reason.add(row);
+		}
+		return reason;
 		
 	}
 	

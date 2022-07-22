@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillstorm.data.ReimbursementDAO;
 import com.skillstorm.models.Expenses;
+import com.skillstorm.models.Reason;
+
 
 @WebServlet(urlPatterns = "/*")
 public class ReimbursementController extends HttpServlet{
@@ -31,10 +33,23 @@ public class ReimbursementController extends HttpServlet{
 		try {
 			
 			ObjectMapper map = new ObjectMapper(); //initializes Jackson ObjectMapper object
-			Set<Expenses> result = dao.findAll(); //retrieves data from DB
-//			System.out.println(result);
-			resp.setContentType("application/json"); //tells client that the response will be JSON
-			resp.getWriter().append(map.writeValueAsString(result)); //adds DB data to response as JSON
+			String path = req.getPathInfo();
+			
+			switch (path) {
+			case "/table":
+				Set<Expenses> expense = dao.findAll(); //retrieves expenses from DB
+				resp.setContentType("application/json"); //tells client that the response will be JSON
+				resp.getWriter().append(map.writeValueAsString(expense)); //adds expenses to response as JSON
+				break;
+			case "/form":
+				Set<Reason> reason = dao.findReason(); //retrieves reasons from DB;
+				resp.setContentType("application/json"); //tells client that the response will be JSON
+				resp.getWriter().append(map.writeValueAsString(reason)); //adds reasons to response as JSON
+				break;
+			default:
+				break;
+			}
+
 			
 			
 		} catch (SQLException|IOException e) {
